@@ -1,0 +1,13 @@
+#container {
+    background-color: rgb(255, 83, 83);
+    width: 900px;
+}
+
+#box1,
+#box2,
+#box3 {
+    background-color: greenyellow;
+    height: 150px;
+    width: 150px;
+    border: 10px blue;
+}

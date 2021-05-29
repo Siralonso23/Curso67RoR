@@ -1,0 +1,285 @@
+FAQ
+¿Por qué no vimos las nuevas etiquetas de HTML5 como section, header, footer, main, etc?
+HTML5 tiene más etiquetas nuevas para ayudar a los desarrolladores a estructurar mejor los contenidos del sitio web. Para conocer la lista completa entra a: http://www.w3schools.com/html/html5_new_elements.asp. Aunque estas etiquetas pueden ser útiles, los navegadores antiguos todavía no son totalmente compatibles con ellas, por eso decidimos focalizarnos en las etiquetas HTML originales/antiguas por ahora. Cuando seas un experto en estas etiquetas, será mucho más fácil comenzar a usar las nuevas etiquetas de HTML5. Obviamente ya sabes que los navegadores antiguos tal vez no puedan acceder a las nuevas etiquetas HTML y tu sitio web no pueda ser visualizado.
+
+
+
+¿Cómo puedo saber si mi HTML es válido?
+Puedes (y deberías) usar http://validator.w3.org/ para verificar tu HTML.
+
+
+
+¿Cuál es la diferencia entre un atributo id y un atributo name?
+El atributo id identifica tu elemento para el front-end (CSS y JavaScript). Puede ser utilizada en CUALQUIER elemento.
+
+El atributo name pertenece solo a los elementos de un formulario y es utilizado en el back-end (PHP, Ruby on Rails, etc) los valores de tu formulario.
+
+
+
+¿Qué es el DOM?
+El Document Object Model (DOM) o Modelo de Objetos del Documento, es una representación estructurada de tu HTML generado por el navegador, permitiendo el acceso a los elementos de tu página web para que pueden ser manipulados. Generalmente, es un JavaScript el que hace dicha manipulación. El DOM es muy difícil de definir, por lo que usaremos la siguiente metáfora:
+
+Digamos que tenemos un pedazo de papel que dice “¡Coding Dojo es lo máximo!”. Entonces, tomamos unas letras magnéticas, vamos a nuestro refrigerador y escribimos “¡Coding Dojo es lo máximo! de acuerdo a lo que aparece en el papel. Ese papel es tu HTML y las letras magnéticas pueden ser consideradas nuestro DOM.
+
+En muchos casos, las letras magnéticas serán lo mismo que lo está escrito en nuestro papel, por lo que no habrá diferencia entre HTML y el DOM. En otros casos, querremos cambiar las palabras en el refrigerador, o cambiar el color de las letras magnéticas o agregar otra funcionalidad. Dichos cambios significan manipular el DOM, entonces nuestro papel en HTML con el que comenzamos no tendrá cambios, pero el DOM ya no será idéntico.
+
+Cuando veas JavaScript y sus cambios al DOM o escuches hablar sobre manipulación del DOM, básicamente estarán hablando de interactuar con esos magnetos de refrigerador luego de haber copiado nuestro papel en HTML.
+
+Hay 3 formas de adjuntar CSS a un documento:  inline, internal, y external. Inline e Internal son consideradas malas prácticas. Solo utilizaremos external stylesheets, enlazadas desde el documento HTML utilizando la etiqueta <head>. Revisa el curso de HTML si no recuerdas cómo hacer esto.
+
+CSS utiliza un esquema de prioridad para determinar qué reglas de estilo aplicar si más de una regla encaja con un elemento particular. En este esquema, las prioridades o pesos ("weights") bajan en cascada y son asignadas a reglas, por lo que los resultados son predecibles.
+
+Una hoja de estilo es una lista de reglas (rules). Cada regla (o “rule-set”) consiste en uno o más selectores (selectors) y un bloque de declaración (declaration block).
+
+CSS Selector
+Los selectores se utilizan para declarar los elementos de HTML para los cuales aplicará un estilo.
+
+Los selectores más comunes son:
+
+Todos los elementos con una etiqueta específica de HTML (ej: p, h1)
+Los elementos especificados de acuerdo a los siguientes atributos:
+id (son precedidos por # en CSS)
+Debe ser único y solo puede ser utilizado una vez en tu página.
+class (son precedidos por . en CSS)
+Pueden ser utilizados muchas veces para compartir código CSS repetido.
+Bloque de Declaración
+Un bloque de declaración es una lista de declaraciones entre llaves “{}”. Cada declaración individual consiste en una propiedad, dos puntos ( : ), y un valor. Si un bloque tiene múltiples declaraciones, tienen que estar separadas por un punto y coma ( ; ).
+
+Algunos ejemplos:
+
+Para todas las etiquetas “p” de HTML, haz el color de fuente azul (blue).
+
+p {
+  color: blue;
+}
+Para un elemento con el id “importante”, haz el tamaño de fuente (font size) de 36px.
+
+#importante {
+  font-size: 36px;
+}
+Para todos los elementos con la clase “info”, haz el fondo (background) verde y agrega un borde negro (black border) de 1px de ancho.
+
+.info {
+  background-color: green;
+  border: 1px solid black;
+}
+En estos ejemplos, p, #importante e .info son selectores. Color, font-size, background-color y border son propiedades.
+
+Más sobre selectores: 
+
+http://www.webdesignerdepot.com/2013/08/10-css-selectors-you-shouldnt-code-without/
+http://www.w3schools.com/cssref/css_selectors.asp
+Ahora que sabemos un poco más sobre cómo usar selectores, hagamos una lista general de las propiedades internal para CSS:
+
+element (1 punto)
+.class (10 puntos)
+#id (100 puntos)
+Este es el orden de prioridad predeterminado. Adicionalmente, la especificidad también cuenta, por ejemplo, ul li anulará a li. W3C ha creado un buena tabla respecto a cómo deberías calcular el peso interno (internal weight):
+
+li            {...}  /* a=0 b=0 c=1 -> specificity =   1 */
+ul li         {...}  /* a=0 b=0 c=2 -> specificity =   2 */
+ul ol li      {...}  /* a=0 b=0 c=3 -> specificity =   3 */
+li.red        {...}  /* a=0 b=1 c=1 -> specificity =  11 */
+ul ol li.red  {...}  /* a=0 b=1 c=3 -> specificity =  13 */
+#list         {...}  /* a=1 b=0 c=0 -> specificity = 100 */
+a representa el número de atributos #id en el selector
+b representa el número de atributos de clase (class)
+c representa el número de nombres de etiqueta
+Combinar esto en un número te dará el peso real. Esto significa que li #list tendrá el mismo peso que ul #list. Esto es, probablemente, una de las cosas más confusas del esquema en cascada (cascade scheme), pero es de hecho más simple de lo que piensas: se trata de contar.
+
+Elementos de Estilo
+Más abajo se presentan algunas de las propiedades de estilo más comunes que afectarán a todos los elementos. No es una lista definitiva y debieras buscar otras propiedades que puedan ayudarte a agregar estilo a tus documentos.
+
+width | height:
+Las propiedades width (ancho) y height (altura) son utilizadas para determinar el tamaño de tus elementos. Los valores pueden ser expresados en pixeles (px) y porcentaje (%). Cuando se trabaja con contenido estático, es recomendable utilizar px puesto que definirás tu página para que no cambie. Si trabajas con un diseño responsivo, es mejor utilizar %, 
+
+Ten cuidado al establecer tus propiedades de altura ya que esto determinará cuánto contenido puede tener el elemento. Si no lo configuras, tu elemento se extenderá para encajar con el contenido. Por otro lado, si lo configuras y tienes más contenido que el que se puede mostrar, entonces tendrás que ajustar la altura manualmente cada vez que cambies el contenido o deberás utilizar la propiedad overflow. 
+
+Cuando quieras redimensionar tu elemento (ej: imágenes), puedes ajustar una propiedad (ancho o altura) y la otra se ajustará automáticamente para conservar las dimensiones relativas de la imagen.
+
+  a {
+    width: 25px;
+  }
+  div {
+    width: 100%;
+    height: 200px;
+  }
+  img {
+    width: 250px;
+  }
+overflow:
+Esta propiedad determina qué debe pasar cuando el contenido dentro de un contenedor es demasiado para el tamaño del contenedor. Puedes configurar el contenedor para ocultar la información adicional que no cabe, mostrar la información como sea o agregar una barra de desplazamiento (scroll bar) con lo que el contenido podría ser visto pese a su tamaño.
+
+  div {
+    overflow: scroll;
+  }
+background:
+La propiedad background (fondo) puede modificar el fondo de un elemento en una sola línea, lo que es más sencillo que separar cada propiedad en su propia línea de código. El color puede ser definido utilizando hex, rgb o código semántico (semantic code).
+
+  p {
+    background: #ffffff url("cherries.png") no-repeat fixed center;
+  }
+background-color | background-image | background-position | background-size | background-repeat:
+Estas propiedades ajustan el fondo de acuerdo a su tipo. Como background, background-color puede ser definida utilizando hex, rgb o código semántico.
+
+  p {
+    background-color: blue;
+  }
+  div {
+    background-image: url("cherries.png");
+    background-position: center;
+    background-size: auto;
+    background-repeat: no-repeat;
+  }
+border:
+Esta propiedad ajusta todos los elementos de borde en una sola línea. Así, el primer valor es el grosor del borde. El segundo valor es tipo de borde, mientras que el tercero es el color del borde. El color puede ser hex, rgb o código semántico.
+
+La propiedad border puede separarse en distintas líneas utilizando border-width, border-style y border color. Además, puedes seleccionar específicamente qué borde modificar utilizando border-top (arriba), border-bottom (abajo), border-right (a la derecha) y border-left (a la izquierda).
+
+  button {
+    border: 2px dotted green;
+  }
+  div {
+    border: 1px solid #000000;
+  }
+  p {
+    border-right: 1px groove rgb(100,100,100);
+    border-left: 1px groove rgb(200,200,200);
+  }
+border-radius
+Esta propiedad permite dar una apariencia curva a las esquinas de tu borde. Los valores puede ser establecidos utilizando px o %.
+
+  button {
+    border-radius: 5px;
+
+Texto de Estilo
+A continuación algunas de las más comúnmente utilizadas propiedades de estilo de texto (text style properties). Esta no es la lista completa, por lo que te invitamos a buscar en internet otras propiedades de estilo de texto..
+
+color:
+El color de texto se especifica usando la propiedad de color. El valor de la propiedad de color puede ser expresada utilizando hex, RGB o código semántico.
+
+  p {
+    color: #ffffff;
+  }
+  a {
+    color: rgb(255, 255, 255);
+  }
+  span {
+    color: white;
+  }
+text-align:
+Esta propiedad se utiliza para establecer la alineación horizontal de cualquier texto. El texto puede estar centrado, alineado a la izquierda o a la derecha, o justificado. Esta propiedad solo funcionará si también presenta un bloque.
+
+  h1 {
+    text-align: center;
+  }
+text-decoration:
+Es utilizada para agregar o remover underlines (subrayados), overlines (línea sobre) y line-throughs (tachado).
+
+  a {
+    text-decoration: none;
+  }
+Font (Fuente)
+font-family:
+La propiedad font-family especifica el estilo de fuente a ser usado por un elemento. Existen 2 tipos de nombres de font-family:
+
+named-family - Ejemplos: "times", "courier", "arial"
+generic-family - Ejemplos: "serif", "sans-serif", "cursive", "fantasy", "monospace"
+Fuentes Web-safe:
+
+Existen fuentes instaladas en casi todos los sistemas y se denominan web safe fonts (fuentes seguras para la web), porque en general se verán igual independiente del sistema que tenga el usuario. Algunas de ellas son: Verdana, Arial, Trebuchet MS, Times New Roman, Georgia, Andale Mono, Courier New, Comic Sans e Impact.
+
+  p {
+    font-family: "helvetica neue", arial, verdana, sans-serif;
+  }
+Font-family permite ingresar múltiples opciones cuando el navegador las recorre de izquierda a derecha hasta que encuentra una fuente en el sistema que puede ser usada. Esto significa que siempre debes asegurarte de tener una opción generic-family como tu último valor, ya que si alguno de los otros puede ser encontrado, el navegador utilizará la opción predeterminada para la familia especificada.
+
+El navegador busca la fuente Helvetica Neue en el sistema de usuario y si la encuentra la utiliza.
+Si no encuentra Helvetica Neue, el navegador busca Arial en el sistema del usuario y si la encuentra la utiliza.
+Si Arial no es encontrada, usará Verdana.
+Como último recurso, si no encuentra ninguna de las fuentes en el grupo de fuentes, volvemos a sans-serif instruyendo al navegador que use sea cual sea la fuente sans-serif predeterminada del sistema. No sabrás que se usará exactamente en este caso, pero al menos es mejor que terminar con la fuente predeterminada del navegador, Times new roman, la cual es una fuente serif.
+Ten en cuenta que las fuentes con más de una palabra en su nombre deben ir entre comillas.
+
+font-size:
+La propiedad font-size (tamaño de fuente) puede ser expresada en 4 unidades diferentes: pt, px, em, %. Pt y px (punto y pixel) son consideradas dimensionamiento estático y no se ajustarán adecuadamente cuando se redimensione tu página. Em y % (medida responsiva y porcentaje) sí se ajustarán y, por ende,  son las recomendadas por los desarrolladores. A continuación podrás ver un cuadro desplegable que muestra las equivalencias aproximadas entre las cuatro unidades.
+
+
+Point | Pixel | Em | Percent
+  h3 {
+    font-size: 10pt;
+  }
+  p {
+    font-size: 14px;
+  }
+  a {
+    font-size: 1.2em;
+  }
+  span {
+    font-size: 80%;
+  }
+font-style
+Esta propiedad controla la inclinación de la letra. Algunos textos pueden tener la propiedad italic (cursiva) como parte de la fuente, por lo que seleccionarla sería simple. Para las fuentes que no tienen el estilo italic, el valor oblique puede ser utilizado para imitar el texto en italic.
+
+  span {
+    font-style: italic;
+  }
+font-weight
+Esta propiedad define el grosor de una línea de caracteres. normal es normalmente el valor por defecto. Los valores pueden ser establecidos de forma numérica o semántica.
+
+
+normal
+  p {
+    font-weight: bold;
+  }
+  span {
+    font-weight: 600;
+  }
+¿Qué es una etiqueta span?
+Si quieres resaltar un texto específico dentro de un párrafo o división, entonces puedes utilizar <span>. A diferencia de <div> que sitúa al siguiente <div> en una línea separada, <span> por defecto pone al elemento en la misma línea. Por ejemplo, considera
+
+<h1>Hello <div>World</div> </h1>
+Arriba por defecto pondríamos ‘World’ (Mundo) en una nueva línea. Sin embargo, si quisieras que World se mostrara en la misma línea, deberías escribir
+
+<h1>Hello <span>World</span> </h1>
+Luego, en el css, podrías hacer algo como esto para resaltar solo la palabra "World":
+
+h1 span {
+   font-weight: bold;
+   color: blue;
+}
+Para leer más sobre la diferente entre <div> y <span>, puede leer: https://www.codecademy.com/en/forum_questions/502ad0ea558dfe0002026d69
+
+Cómo usar Inspeccionar Elemento (Inspect Element)
+Editar HTML y CSS puede verse como desactivar una bomba, un pequeño cambio y tu proyecto enloquece. Tu mejor aliado al editar son las herramientas de desarrollador (Developer Tools). Se incluyen en Chrome, Firefox, la última versión de Internet Explorer (Edge) y Safari.
+
+Para acceder a Inspeccionar Elemento, simplemente usa el clic derecho en cualquier elemento de la ventana del navegador y cliquea en Inspeccionar (Inspect) ¡y listo!. Inspeccionar Elemento es una caracteriza que muestra todas las propiedades del sitio web que estás viendo.
+
+
+
+Esta es una captura de pantalla de la ventana inspeccionar de Chrome. En la barra gris de arriba, verás un conjunto de opciones incluyendo ‘elements’ y ‘console’, que muestran distinta información de la página.
+
+Pestaña de Elementos (Elements Tab)
+Por las siguientes dos lecciones, nos centraremos en ESPN.com. Puesto que la mayoría de las empresas cambian sus sitios webs con frecuencia, ten en cuenta que los sitios de ESPN que verás, pueden ser un tanto diferentes a los ejemplos del vídeo de más abajo. Pese a ello, las mismas herramientas y conceptos pueden ser aplicados.
+
+La pestaña elements, te permite ver el HTML que está siendo procesado por tu navegador. Puedes ver todas las classes e ids del contenido HTML, lo que es de gran ayuda para depurar CSS. La imagen de más arriba, muestra la pestaña de elementos de una porción del HTML de ESPN.com ¡Fíjate que incluso puedes ver comentarios!!
+
+Si cliqueas en un elemento particular del HTML dentro del cuadro de elementos, verás que el lado derecho de la ventana de Inspeccionar Elemento cambia. Esta parte de la ventana muestra una tonelada de información de CSS y JavaScript. Hay una pestaña a la derecha llamada ‘estilos’ (styles) que es por lejos la herramienta más útil al trabajar con CSS.
+
+
+
+ (Este es el elemento que detallan las 2 imágenes anteriores)
+
+La pestaña estilos muestra todo el el CSS procesado para un elemento particular. La captura de pantalla anterior es la información de CSS para el logo de ESPN en su página web. A la izquierda de la imagen se muestra los estilos ejecutados del elemento y la hoja de estilo de donde fueron tomados. Baja hasta el final de la pestaña y verás la imagen a la derecha, que debería ser familiar. Esta imagen representa los valores del modelo de cajas del elemento en cuestión. Puedes ver el margen (margin), relleno (padding), borde (border) y las dimensiones de cualquier elemento de la página. Aún mejor, puedes pasar por una parte específica de la caja en la ventana de inspeccionar elemento y la propiedad particular del elemento será resaltada en la página ¡Inténtalo! Esta herramienta es genial para ajustar la posición (los cambios solo se realizarán en el navegador y no se guardarán en el archivo CSS)
+
+Mira la imagen nuevamente, verás un sector donde dice ‘element.style’. Ahí puedes escribir tu propio CSS y modificar lo que se muestra en la página web. Por supuesto, estos cambios no son permanentes, pero ya puedes imaginarte lo útil de esta herramienta. Otra cosa más que puedes hacer con todas las reglas de estilos de la pestaña estilos (styles), es desactivar las propiedades CSS asociadas des-marcándolas.
+Genial, ¿y ahora qué?
+Cualquier buen desarrollador web te dirá que Inspeccionar Elemento es una excelente herramienta en la lucha contra el código deficiente. Hay personas cuyo trabajo es específicamente hacer estas herramientas de desarrollo, por lo que estás en buenas manos. Inspeccionar es muy fácil de entender cuando la exploras ¡Empieza a usarla regularmente y te ahorrará mucho tiempo!
+
+Selector de Color
+El diseño y selección de la paleta de colores representan una parte importante en la creación de una página web. Para ayudar con una selección de colores precisa, hay una variedad de herramientas disponibles para encontrar y definir los colores, además de armar paletas de colores. Es fácil encontrar en internet herramientas para generar esquemas de colores, pero encontrar el color exacto utilizado en el borde del botón de tu sitio web favorito puede ser más complicado. En esta sección esbozaremos cómo usar la herramienta de selector de color (colorpicker) de Chrome Dev, que nos ayudará a encontrar colores que nos interesan desde otros sitios web.
+
+Para  acceder al selector de color, primero necesitamos abrir el Inspector de elementos y seleccionar un elemento con un color de fondo. Luego, cliqueamos en el cuadrado de color de la ventana de Estilo (Styles). Entonces, se mostrará información respecto al color de fondo del elemento, permitiendo distintos ajustes como los valores del código de colores, distintas opciones de colores y una gradiente de intensidad y oscuridad. Desde ahí, es posible encontrar el valor de los colores en la página moviendo el cursor del mouse por la página. Por medio de un círculo se mostrarán los pixeles ampliados. El píxel central del círculo es el que toma el valor del color al hacer clic.
+  }
+
+background-image: linear-gradient(red, yellow, blue);
+Nota 
